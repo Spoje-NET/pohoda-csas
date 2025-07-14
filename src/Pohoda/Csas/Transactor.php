@@ -7,7 +7,7 @@ declare(strict_types=1);
  *
  * https://github.com/Spoje-NET/pohoda-csas
  *
- * (c) Vítězslav Dvořák <vitezslav.dvorak@spojenet.cz>
+ * (c) SpojeNetIT <https://spojenet.cz>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,6 +21,8 @@ use SpojeNET\Csas\Model\TransactionList;
 
 /**
  * Handle bank transactions.
+ *
+ * @no-named-arguments
  */
 class Transactor extends CsasBankClient
 {
@@ -45,7 +47,7 @@ class Transactor extends CsasBankClient
             if ($transactionList instanceof TransactionList) {
                 foreach ($transactionList->getTransactions() as $transaction) {
                     // Process each transaction as needed
-                    $this->processTransaction($transaction);
+                    self::processTransaction($transaction);
                 }
             }
         } catch (ApiException $e) {
@@ -59,7 +61,7 @@ class Transactor extends CsasBankClient
      *
      * @param \SpojeNET\Csas\Model\TransactionListTransactionsInner $transaction
      */
-    private function processTransaction($transaction): void
+    private static function processTransaction($transaction): void
     {
         // Implement the logic to process each transaction
     }

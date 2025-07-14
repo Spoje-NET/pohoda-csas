@@ -7,7 +7,7 @@ declare(strict_types=1);
  *
  * https://github.com/Spoje-NET/pohoda-csas
  *
- * (c) Vítězslav Dvořák <vitezslav.dvorak@spojenet.cz>
+ * (c) SpojeNetIT <https://spojenet.cz>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,6 +20,8 @@ use SpojeNET\Csas\ApiException;
 
 /**
  * Description of CsasBankClient.
+ *
+ * @no-named-arguments
  */
 abstract class CsasBankClient extends \mServer\Bank
 {

@@ -1,0 +1,8 @@
+src/pohoda-csas-statements.php
+src/Pohoda/Csas/Statementor.php
+src/Pohoda/Csas/PohodaBankClient.php
+src/Pohoda/Csas/CsasBankClient.php
+src/Pohoda/Csas/Transactor.php
+src/pohoda-csas-setup.php
+src/csas2pohoda.php
+src/pohodaSQL-csas-statements-sharepoint.php

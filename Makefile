@@ -23,3 +23,7 @@ vendor: composer.json composer.lock ## Installs composer dependencies
 cs: ## Update Coding Standards
 	vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.dist.php --diff --verbose
 
+
+.PHONY: token
+token: ## Refresh token
+	csas-access-token -t`csas-access-token -l | head -n 1 | awk '{print $$2}'`  -o.env

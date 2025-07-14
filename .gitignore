@@ -6,3 +6,9 @@ composer.phar
 # composer.lock
 /nbproject/private/
 /.build/
+/debian/.debhelper/
+/debian/pohoda-csas/
+/debian/debhelper-build-stamp
+/debian/pohoda-csas.substvars
+/debian/files
+/.env
