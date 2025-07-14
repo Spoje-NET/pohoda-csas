@@ -31,12 +31,12 @@ class Statementor extends \SpojeNet\CSas\Statementor
     /**
      * IBAN of the account (if provided).
      */
-    protected ?string $account_iban = null;
+    protected ?string $accountIban = null;
 
     /**
      * UUID of the account.
      */
-    protected ?string $account_uuid = null;
+    protected ?string $accountUuid = null;
     protected int $rateOffset = 0;
     private DefaultApi $this;
 
@@ -78,22 +78,24 @@ class Statementor extends \SpojeNet\CSas\Statementor
 
         if (preg_match('/^[A-Z]{2}\d{2}[A-Z0-9]{1,30}$/', $bankAccount)) {
             // $bankAccount looks like an IBAN, obtain UUID for it
-            $this->account_iban = $bankAccount;
+            $this->accountIban = $bankAccount;
 
             // The actual method to get UUID from IBAN may differ; adjust as needed for your API
             try {
                 $accountInfo = self::getAccountByIban($this->csasApi, $bankAccount); // If not available, replace with correct method
-                $this->account_uuid = $accountInfo->getId();
-                $this->addStatusMessage(sprintf(_('Statementor was initialized using IBAN; the account UUID %s will be retrieved by an additional API call to the bank.'), $this->account_uuid), 'warning');
+                $this->accountUuid = $accountInfo->getId();
+                $this->addStatusMessage(sprintf(_('Statementor was initialized using IBAN; the account UUID %s will be retrieved by an additional API call to the bank.'), $this->accountUuid), 'warning');
             } catch (\SpojeNet\CSas\ApiException $ex) {
                 throw $ex; // TODO: Handle somehow in future
             }
         } elseif (preg_match('/^[0-9a-fA-F-]{36}$/', $bankAccount)) {
             // $bankAccount looks like a UUID
-            $this->account_uuid = $bankAccount;
+            $this->accountUuid = $bankAccount;
         } else {
             throw new \InvalidArgumentException(_('Invalid account identifier provided. It should be either an IBAN or a UUID.'));
         }
+
+        parent::__construct($this->accountUuid, $bankAccount, \array_key_exists($options, 'scope') ? $options['scope'] : null);
     }
 
     /**
@@ -107,7 +109,7 @@ class Statementor extends \SpojeNet\CSas\Statementor
         try {
             // Fetch statements from CSAS API
             // Replace with the correct method to get statements by UUID
-            $statementList = $this->getAccountStatements($this->account_uuid);
+            $statementList = $this->getAccountStatements($this->accountUuid);
 
             if ($statementList instanceof StatementList) {
                 foreach ($statementList->getAccountStatements() as $statement) {

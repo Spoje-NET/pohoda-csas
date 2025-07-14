@@ -11,7 +11,7 @@
     ],
     "require": {
         "spojenet/csas-accountsapi": "^0.7.2",
-        "vitexsoftware/pohoda-connector": "^0.9"
+        "vitexsoftware/pohoda-connector": "dev-main"
     },
     "require-dev": {
         "phpunit/phpunit": "*",

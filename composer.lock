@@ -1752,12 +1752,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/VitexSoftware/PHP-Pohoda-Connector.git",
-                "reference": "de82d80b727bc10ec69cda67e8ba8222741e8309"
+                "reference": "a46379d65a4038b4d88aaa359bd3ebe77306b715"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/VitexSoftware/PHP-Pohoda-Connector/zipball/de82d80b727bc10ec69cda67e8ba8222741e8309",
-                "reference": "de82d80b727bc10ec69cda67e8ba8222741e8309",
+                "url": "https://api.github.com/repos/VitexSoftware/PHP-Pohoda-Connector/zipball/a46379d65a4038b4d88aaa359bd3ebe77306b715",
+                "reference": "a46379d65a4038b4d88aaa359bd3ebe77306b715",
                 "shasum": ""
             },
             "require": {
@@ -1803,7 +1803,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2025-07-13T17:11:19+00:00"
+            "time": "2025-07-13T21:54:28+00:00"
         },
         {
             "name": "vitexsoftware/pohodaser",
