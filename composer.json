@@ -18,7 +18,7 @@
         "phpstan/phpstan": "*",
         "friendsofphp/php-cs-fixer": "^3.70",
         "ergebnis/composer-normalize": "^2.45",
-        "ergebnis/php-cs-fixer-config": "^6.53",
+        "ergebnis/php-cs-fixer-config": "^6.54",
         "phpstan/phpstan-phpunit": "^2.0"
     },
     "config": {
