@@ -29,9 +29,10 @@ This application downloads bank statements in a machine-readable format from the
 
 3. Run the application:
 
-   .. code-block:: bash
+```bash
 
       php src/csas2pohoda.php
+```
 
 ## Contributing
 

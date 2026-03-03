@@ -1,13 +1,13 @@
 version: 2
 updates:
-  - package-ecosystem: "composer"
+  - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
     versioning-strategy: increase
     commit-message:
-      prefix: "composer"
+      prefix: "pip"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

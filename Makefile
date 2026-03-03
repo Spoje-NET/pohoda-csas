@@ -26,4 +26,4 @@ cs: ## Update Coding Standards
 
 .PHONY: token
 token: ## Refresh token
-	csas-access-token -t`csas-access-token -l | head -n 1 | awk '{print $$2}'`  -o.env
+	csas-access-token -t`csas-access-token -l | tail -n 1 | awk '{print $$2}'`  -o.env
