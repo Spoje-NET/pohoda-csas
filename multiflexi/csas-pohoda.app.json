@@ -1,0 +1,148 @@
+{
+  "$schema": "https://raw.githubusercontent.com/VitexSoftware/php-vitexsoftware-multiflexi-core/refs/heads/main/multiflexi.app.schema.json",
+  "schemaVersion": "3.4.0",
+  "uuid": "5b9d6c3e-7a41-4c1e-9f6b-2d8e0a1c4f37",
+  "name": {
+    "en": "CSAS Statement to Pohoda Importer",
+    "cs": "Import výpisů ČS do Pohody"
+  },
+  "description": {
+    "en": "Downloads bank statements from Česká spořitelna (CSAS) in ABO format and imports the bank movements into Pohoda via mServer.",
+    "cs": "Stáhne bankovní výpisy z České spořitelny ve formátu ABO a naimportuje bankovní pohyby do Pohody přes mServer."
+  },
+  "version": "0.2.0",
+  "tags": [
+    "banking",
+    "accounting",
+    "automation",
+    "CSAS",
+    "Pohoda"
+  ],
+  "homepage": "https://github.com/Spoje-NET/csas-pohoda",
+  "executable": "/usr/bin/csas-pohoda",
+  "requirements": [
+    "Csas",
+    "MServer"
+  ],
+  "events": {
+    "emits": {
+      "bank.statement.imported": {
+        "description": "A bank statement was imported into the accounting system",
+        "evidence": "banka",
+        "operation": "create"
+      }
+    }
+  },
+  "produces": {
+    "report": {
+      "description": {
+        "en": "Result of the download and the import",
+        "cs": "Výsledek stažení a importu"
+      },
+      "schema": "https://raw.githubusercontent.com/VitexSoftware/php-vitexsoftware-multiflexi-core/refs/heads/main/multiflexi.report.schema.json",
+      "format": "json"
+    }
+  },
+  "environment": {
+    "FROM_DATE": {
+      "type": "string",
+      "description": {
+        "en": "Start date YYYY-MM-DD (together with TO_DATE)",
+        "cs": "Počáteční datum YYYY-MM-DD (spolu s TO_DATE)"
+      },
+      "required": false,
+      "category": "Other",
+      "hint": "2025-09-01"
+    },
+    "TO_DATE": {
+      "type": "string",
+      "description": {
+        "en": "End date YYYY-MM-DD (together with FROM_DATE)",
+        "cs": "Koncové datum YYYY-MM-DD (spolu s FROM_DATE)"
+      },
+      "required": false,
+      "category": "Other",
+      "hint": "2025-09-30"
+    },
+    "CSAS_STATEMENT_SCOPE": {
+      "type": "string",
+      "description": {
+        "en": "Symbolic period used when no dates are given: today, yesterday, last_week, last_month, current_month ...",
+        "cs": "Symbolické období, pokud nejsou zadána data"
+      },
+      "required": false,
+      "category": "Other",
+      "defval": "last_month"
+    },
+    "OUTPUT_DIR": {
+      "type": "string",
+      "description": {
+        "en": "Directory where the downloaded statements are saved",
+        "cs": "Adresář pro stažené výpisy"
+      },
+      "required": false,
+      "category": "Other",
+      "defval": "/var/tmp/csas-pohoda"
+    },
+    "POHODA_BANK_IDS": {
+      "type": "string",
+      "description": {
+        "en": "Bank account identifier (ID) of the CSAS account in Pohoda",
+        "cs": "Zkratka bankovního účtu ČS v Pohodě"
+      },
+      "required": true,
+      "category": "Other",
+      "hint": "CS"
+    },
+    "POHODA_TIMEOUT": {
+      "type": "integer",
+      "description": {
+        "en": "mServer connection timeout in seconds",
+        "cs": "Timeout spojení s mServerem v sekundách"
+      },
+      "required": false,
+      "category": "Other",
+      "defval": "60"
+    },
+    "POHODA_DEBUG": {
+      "type": "bool",
+      "description": {
+        "en": "Enable mServer debug output",
+        "cs": "Ladicí výstup mServeru"
+      },
+      "required": false,
+      "category": "Other",
+      "defval": "false"
+    },
+    "RESULT_FILE": {
+      "type": "string",
+      "description": {
+        "en": "Write the JSON report to this file",
+        "cs": "Soubor pro JSON report"
+      },
+      "required": false,
+      "category": "Other",
+      "defval": "csas_pohoda.json"
+    },
+    "EASE_LOGGER": {
+      "type": "string",
+      "description": {
+        "en": "Log destinations: console|syslog",
+        "cs": "Cíle logu: console|syslog"
+      },
+      "required": false,
+      "category": "Other",
+      "defval": "console|syslog"
+    },
+    "POHODA_BANK_CODE": {
+      "type": "string",
+      "description": {
+        "en": "Bank code of the account, 0800 for Česká spořitelna",
+        "cs": "Kód banky účtu, 0800 pro Českou spořitelnu"
+      },
+      "required": true,
+      "defval": "0800",
+      "category": "Other"
+    }
+  }
+}
